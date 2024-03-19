@@ -1,4 +1,4 @@
-package com.keyin.domain;
+package com.keyin.rest.player;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
