@@ -16,7 +16,7 @@ public class TeamService {
     @Autowired
     private TeamRepository teamRepository;
     @Autowired
-    DivisionService divisionService;
+    private DivisionService divisionService;
 
     public List<Team> getAllTeams() {
         return (List<Team>) teamRepository.findAll();
@@ -55,6 +55,9 @@ public class TeamService {
             Team teamToUpdate = teamToUpdateOptional.get();
 
             teamToUpdate.setName(updatedTeam.getName());
+            teamToUpdate.setDivision(divisionService.getDivisionById(updatedTeam.getDivision().getId()));
+
+            teamToUpdate.setPlayers(updatedTeam.getPlayers());
             // update players
 
             return teamRepository.save(teamToUpdate);
