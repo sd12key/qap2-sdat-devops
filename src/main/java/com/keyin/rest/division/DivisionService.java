@@ -11,6 +11,10 @@ public class DivisionService {
     @Autowired
     private DivisionRepository divisionRepository;
 
+    public Division findByName(String name) {
+        return divisionRepository.findByName(name);
+    }
+
     public List<Division> getAllDivisions() {
         return (List<Division>) divisionRepository.findAll();
     }

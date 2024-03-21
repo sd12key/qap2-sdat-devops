@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DivisionRepository extends CrudRepository<Division, Long> {
-
+    public Division findByName(String name);
 }

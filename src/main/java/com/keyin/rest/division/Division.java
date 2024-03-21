@@ -16,6 +16,17 @@ public class Division {
     private String startBirthYear;
     private String endBirthYear;
 
+    public Division() {
+    }
+
+    public Division(long id) {
+        this.id = id;
+    }
+
+    public Division(String name) {
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }
