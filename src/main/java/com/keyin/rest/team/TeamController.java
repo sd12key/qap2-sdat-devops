@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,6 +20,20 @@ public class TeamController {
     @GetMapping("/team")
     public List<Team> getAllTeams() {
         return teamService.getAllTeams();
+    }
+
+    @GetMapping("team_search")
+    public List<Team> getTeamsByPlayerLastName(@RequestParam(value = "player_last_name", required = false) String playerLastName,
+                                               @RequestParam(value = "division_name", required = false) String divisionName) {
+        List<Team> results = new ArrayList<Team>();
+
+        if (playerLastName != null) {
+            results =  teamService.getTeamsByPlayerLastName(playerLastName);
+        } else if (divisionName != null) {
+            results =  teamService.getTeamsByDivisionName(divisionName);
+        }
+
+        return results;
     }
 
     @GetMapping("/team/{id}")

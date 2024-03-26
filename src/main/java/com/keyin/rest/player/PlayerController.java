@@ -14,9 +14,14 @@ public class PlayerController {
     @Autowired
     private PlayerService playerService;
 
-    @GetMapping("/player")
+    @GetMapping("/players")
     public List<Player> getAllPlayers() {
         return playerService.getAllPlayers();
+    }
+
+    @GetMapping("/player_search")
+    public Player getPlayerByLastName(@RequestParam("last_name") String lastName) {
+        return playerService.getPlayerByLastName(lastName);
     }
 
     @GetMapping("/player/{id}")

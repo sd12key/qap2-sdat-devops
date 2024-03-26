@@ -28,6 +28,14 @@ public class TeamService {
         return teamOptional.orElse(null);
     }
 
+    public List<Team> getTeamsByPlayerLastName(String playerLastName) {
+        return teamRepository.findByPlayers_LastName(playerLastName);
+    }
+
+    public List<Team> getTeamsByDivisionName(String divisionName) {
+        return teamRepository.findByDivision_Name(divisionName);
+    }
+
     public void deleteTeamById(long id) {
         teamRepository.deleteById(id);
     }

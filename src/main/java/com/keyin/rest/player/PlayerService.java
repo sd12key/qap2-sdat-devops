@@ -23,6 +23,10 @@ public class PlayerService {
         return divisionOptional.orElse(null);
     }
 
+    public Player getPlayerByLastName(String lastName) {
+        return playerRepository.findByLastName(lastName);
+    }
+
     public void deletePlayerById(long id) {
         playerRepository.deleteById(id);
     }
