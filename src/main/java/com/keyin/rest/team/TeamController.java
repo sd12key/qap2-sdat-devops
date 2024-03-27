@@ -5,6 +5,7 @@ import com.keyin.rest.division.DivisionRepository;
 import com.keyin.rest.player.Player;
 import com.keyin.rest.player.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,8 +38,14 @@ public class TeamController {
     }
 
     @GetMapping("/team/{id}")
-    public Team getTeamById(@PathVariable long id) {
-        return teamService.getTeamById(id);
+    public ResponseEntity<Team> getTeamById(@PathVariable long id) {
+        Team teamToReturn = teamService.getTeamById(id);
+
+        if (teamToReturn == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(teamToReturn);
     }
 
     @PostMapping("/team")
