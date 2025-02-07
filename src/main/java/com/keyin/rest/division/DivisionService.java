@@ -15,6 +15,10 @@ public class DivisionService {
         return divisionRepository.findByName(name);
     }
 
+    public Division findByStartBirthYear(String startBirthYear) {
+        return divisionRepository.findByStartBirthYear(startBirthYear);
+    }
+
     public List<Division> getAllDivisions() {
         return (List<Division>) divisionRepository.findAll();
     }
